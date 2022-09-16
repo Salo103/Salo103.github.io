@@ -16,21 +16,23 @@
   <meta name="author" content="Salo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="几何板子判断是否是凸多边形1234567891011121314151617181920212223242526272829303132333435#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;#define int long long#define endl &quot;\n&quot;const int maxn &#x3D; 2e5 + 5;cons">
+    <meta name="description" content="小组成员：潘浩霖  202031101581  刘通  202031101542  范围管理在我们开发作业管理系统范围分析的时候,我们首先确定作业管理系统的工作和管理范围,从老师的需求和学生的需求角度切入,以作业管理为核心,大致上囊括了老师批改,打分,学生提交,查阅等功能.尽量覆盖平时我们所会遇到的关于作业的问题.确定我们所必须要完成的任务. 进度管理为了高效利用时间来开发我们的项目,我们制定了含">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几何板子">
-<meta property="og:url" content="http://example.com/2022/09/03/%E5%87%A0%E4%BD%95%E6%9D%BF%E5%AD%90/index.html">
+<meta property="og:title" content="实验二-软件项目管理的直观感受">
+<meta property="og:url" content="http://example.com/2022/09/11/%E5%AE%9E%E9%AA%8C%E4%BA%8C-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E7%9B%B4%E8%A7%82%E6%84%9F%E5%8F%97/index.html">
 <meta property="og:site_name" content="Salo&#39;s Blogs">
-<meta property="og:description" content="几何板子判断是否是凸多边形1234567891011121314151617181920212223242526272829303132333435#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;#define int long long#define endl &quot;\n&quot;const int maxn &#x3D; 2e5 + 5;cons">
+<meta property="og:description" content="小组成员：潘浩霖  202031101581  刘通  202031101542  范围管理在我们开发作业管理系统范围分析的时候,我们首先确定作业管理系统的工作和管理范围,从老师的需求和学生的需求角度切入,以作业管理为核心,大致上囊括了老师批改,打分,学生提交,查阅等功能.尽量覆盖平时我们所会遇到的关于作业的问题.确定我们所必须要完成的任务. 进度管理为了高效利用时间来开发我们的项目,我们制定了含">
 <meta property="og:locale" content="zh_CH">
-<meta property="article:published_time" content="2022-09-03T05:38:48.174Z">
-<meta property="article:modified_time" content="2022-09-16T10:03:39.567Z">
+<meta property="og:image" content="https://img-community.csdnimg.cn/images/c60e5dbd71cb412193617b2c60fdfe70.png?x-oss-process=image/auto-orient,1">
+<meta property="article:published_time" content="2022-09-11T11:56:36.012Z">
+<meta property="article:modified_time" content="2022-09-16T10:56:40.030Z">
 <meta property="article:author" content="Salo">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-community.csdnimg.cn/images/c60e5dbd71cb412193617b2c60fdfe70.png?x-oss-process=image/auto-orient,1">
   
   
   
-  <title>几何板子 - Salo&#39;s Blogs</title>
+  <title>实验二-软件项目管理的直观感受 - Salo&#39;s Blogs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">几何板子</span>
+            <span id="subtitle">实验二-软件项目管理的直观感受</span>
           
         </div>
 
@@ -206,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-03 13:38" pubdate>
-          September 3, 2022 pm
+        <time datetime="2022-09-11 19:56" pubdate>
+          September 11, 2022 pm
         </time>
       </span>
     
@@ -218,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          676 wörter
+          860 wörter
         
       </span>
     
@@ -229,7 +231,7 @@
         
         
         
-          6 minuten
+          8 minuten
         
       </span>
     
@@ -267,17 +269,21 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">几何板子</h1>
+            <h1 style="display: none">实验二-软件项目管理的直观感受</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="几何板子"><a href="#几何板子" class="headerlink" title="几何板子"></a>几何板子</h1><h2 id="判断是否是凸多边形"><a href="#判断是否是凸多边形" class="headerlink" title="判断是否是凸多边形"></a>判断是否是凸多边形</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> endl <span class="hljs-string">&quot;\n&quot;</span></span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e5</span> + <span class="hljs-number">5</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> mod = <span class="hljs-number">998244353</span>;<br><span class="hljs-type">int</span> x[<span class="hljs-number">10</span>];<br><span class="hljs-type">int</span> y[<span class="hljs-number">10</span>];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">4</span>;i++)cin&gt;&gt;x[i]&gt;&gt;y[i];<br>    x[<span class="hljs-number">5</span>]=x[<span class="hljs-number">1</span>];<br>    y[<span class="hljs-number">5</span>]=y[<span class="hljs-number">1</span>];<br>    x[<span class="hljs-number">6</span>]=x[<span class="hljs-number">2</span>];<br>    y[<span class="hljs-number">6</span>]=y[<span class="hljs-number">2</span>];<br><span class="hljs-comment">//    x[5]=x[1];</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">3</span>;i&lt;=<span class="hljs-number">6</span>;i++)&#123;<br>        <span class="hljs-type">int</span> tmp=(x[i]-x[i<span class="hljs-number">-2</span>])*(y[i<span class="hljs-number">-1</span>]-y[i<span class="hljs-number">-2</span>])-(x[i<span class="hljs-number">-1</span>]-x[i<span class="hljs-number">-2</span>])*(y[i]-y[i<span class="hljs-number">-2</span>]);<br>        <span class="hljs-keyword">if</span>(tmp&gt;<span class="hljs-number">0</span>)&#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot;No&quot;</span>;<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>    &#125;<br>    cout&lt;&lt;<span class="hljs-string">&quot;Yes&quot;</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br><span class="hljs-comment">//    ios::sync_with_stdio(false);</span><br><span class="hljs-comment">//    cin.tie(0), cout.tie(0);</span><br>    <span class="hljs-type">int</span> T=<span class="hljs-number">1</span>;<br><span class="hljs-comment">//    cin &gt;&gt; T;</span><br>    <span class="hljs-keyword">while</span> (T--) &#123;<br>        <span class="hljs-built_in">solve</span>();<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
+                <p>小组成员：潘浩霖  202031101581  刘通  202031101542</p>
+<p><img src="https://img-community.csdnimg.cn/images/c60e5dbd71cb412193617b2c60fdfe70.png?x-oss-process=image/auto-orient,1" srcset="/img/loading.gif" lazyload alt="1"></p>
+<h2 id="范围管理"><a href="#范围管理" class="headerlink" title="范围管理"></a>范围管理</h2><p>在我们开发作业管理系统范围分析的时候,我们首先确定作业管理系统的工作和管理范围,从老师的需求和学生的需求角度切入,以作业管理为核心,大致上囊括了老师批改,打分,学生提交,查阅等功能.尽量覆盖平时我们所会遇到的关于作业的问题.确定我们所必须要完成的任务.</p>
+<h2 id="进度管理"><a href="#进度管理" class="headerlink" title="进度管理"></a>进度管理</h2><p>为了高效利用时间来开发我们的项目,我们制定了含若干项目进程时间点的计划.对于项目需求分析,子模块的功能开发与代码实现,数据库的设计与构造,代码的合并与数据库的连接,系统测试和验收等具体按时间安排与跟进进度,及时灵活调整进度的安排.</p>
+<h2 id="成本管理"><a href="#成本管理" class="headerlink" title="成本管理"></a>成本管理</h2><p>对于软件的开发成本估算与分析,我们采用的是mysql与idea这种免费的开发环境,许多漏洞也有我们查阅资料补足,预计是无成本费用</p>
+<h2 id="质量管理"><a href="#质量管理" class="headerlink" title="质量管理"></a>质量管理</h2><p>规划质量管理,实施质量保证,控制质量.对于每个子模块功能开发时,如老师的批阅作业功能开发,我们需要保证老师能正确批阅对应学生所提交的作业,确保开发时功能实现高质量.在开发的整个过程都注意质量保障.</p>
+<h2 id="人力资源管理"><a href="#人力资源管理" class="headerlink" title="人力资源管理"></a>人力资源管理</h2><p>规划人力资源管理；组建项目团队；建设项目团队；管理项目团队。对于我们项目开发团队,我们将人力资源按模块分配, 将管理员模块,教师模块,学生模块分配的不同的成员,再细分每个模块的具体功能给对应模块下的成员.</p>
+<h2 id="沟通管理"><a href="#沟通管理" class="headerlink" title="沟通管理"></a>沟通管理</h2><p>规划沟通管理；管理沟通；控制沟通。我们充分利用了软件工程实验课的时间来面对面沟通开发时所遇到的问题,也可以用如微信, qq等网上沟通的平台来交流与沟通项目进度.</p>
+<h2 id="风险管理"><a href="#风险管理" class="headerlink" title="风险管理"></a>风险管理</h2><p>规划风险管理；识别风险；实施定性风险分析；实施定量风险分析；规划风险应对；控制风险。在开发项目中,我们遇到的风险主要来自于技术实现上的进度跟不上,我们需要及时通过查阅资料和询问老师来降低该风险带来的影响.</p>
+<h2 id="集成管理"><a href="#集成管理" class="headerlink" title="集成管理"></a>集成管理</h2><p>在项目生命周期中协调所有其他项目管理知识领域所涉及的过程，确保项目所有组成要素在恰当的时间、正确的地方、合适的人物结合在一起，以恰当地完成项目我们开发项目中对总体的集成管理仍有不足,许多计划与实现还有很大进步区间.</p>
 
                 
               </div>
@@ -296,7 +302,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%AE%9E%E9%AA%8C/" class="category-chain-item">软件项目管理实验</a>
   
   
 
@@ -316,8 +322,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>几何板子</div>
-      <div>http://example.com/2022/09/03/几何板子/</div>
+      <div>实验二-软件项目管理的直观感受</div>
+      <div>http://example.com/2022/09/11/实验二-软件项目管理的直观感受/</div>
     </div>
     <div class="license-meta">
       
@@ -329,7 +335,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Veröffentlicht am</div>
-          <div>September 3, 2022</div>
+          <div>September 11, 2022</div>
         </div>
       
       
@@ -359,18 +365,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/11/%E5%AE%9E%E9%AA%8C%E4%BA%8C-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E7%9B%B4%E8%A7%82%E6%84%9F%E5%8F%97/" title="实验二-软件项目管理的直观感受">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">实验二-软件项目管理的直观感受</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/08/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" title="树链剖分">
-                        <span class="hidden-mobile">树链剖分</span>
+                      <a href="/2022/09/03/%E5%87%A0%E4%BD%95%E6%9D%BF%E5%AD%90/" title="几何板子">
+                        <span class="hidden-mobile">几何板子</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
