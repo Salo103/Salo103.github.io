@@ -16,21 +16,21 @@
   <meta name="author" content="Salo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="图的连通性tarjan求割点板子123456789101112131415161718192021222324252627282930313233343536373839404142int head[maxn];struct node&amp;#123;    int to,val,next;&amp;#125;;int tot&#x3D;0;node edge[maxn];void add(int u,int v,int">
+    <meta name="description" content="dsu on tree子树颜色种类123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图的连通性">
-<meta property="og:url" content="http://example.com/2022/10/17/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7/index.html">
+<meta property="og:title" content="dsu on tree">
+<meta property="og:url" content="http://example.com/2022/11/22/dsu-on-tree/index.html">
 <meta property="og:site_name" content="Salo&#39;s Blogs">
-<meta property="og:description" content="图的连通性tarjan求割点板子123456789101112131415161718192021222324252627282930313233343536373839404142int head[maxn];struct node&amp;#123;    int to,val,next;&amp;#125;;int tot&#x3D;0;node edge[maxn];void add(int u,int v,int">
+<meta property="og:description" content="dsu on tree子树颜色种类123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596">
 <meta property="og:locale" content="zh_CH">
-<meta property="article:published_time" content="2022-10-17T12:01:33.782Z">
-<meta property="article:modified_time" content="2022-10-17T12:03:32.760Z">
+<meta property="article:published_time" content="2022-11-22T14:26:11.375Z">
+<meta property="article:modified_time" content="2022-11-22T14:26:11.375Z">
 <meta property="article:author" content="Salo">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>图的连通性 - Salo&#39;s Blogs</title>
+  <title>dsu on tree - Salo&#39;s Blogs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +195,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">图的连通性</span>
+            <span id="subtitle">dsu on tree</span>
           
         </div>
 
@@ -206,8 +206,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-17 20:01" pubdate>
-          October 17, 2022 pm
+        <time datetime="2022-11-22 22:26" pubdate>
+          November 22, 2022 pm
         </time>
       </span>
     
@@ -218,7 +218,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          727 wörter
+          2k wörter
         
       </span>
     
@@ -229,7 +229,7 @@
         
         
         
-          7 minuten
+          17 minuten
         
       </span>
     
@@ -267,14 +267,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">图的连通性</h1>
+            <h1 style="display: none">dsu on tree</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="图的连通性"><a href="#图的连通性" class="headerlink" title="图的连通性"></a>图的连通性</h1><h2 id="tarjan求割点"><a href="#tarjan求割点" class="headerlink" title="tarjan求割点"></a>tarjan求割点</h2><h3 id="板子"><a href="#板子" class="headerlink" title="板子"></a>板子</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-type">int</span> head[maxn];<br>struct node&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-keyword">to</span>,val,next;<br>&#125;;<br><span class="hljs-type">int</span> tot=<span class="hljs-number">0</span>;<br>node edge[maxn];<br><span class="hljs-type">void</span> <span class="hljs-keyword">add</span>(<span class="hljs-type">int</span> u,<span class="hljs-type">int</span> v,<span class="hljs-type">int</span> val)&#123;<br>    edge[tot].<span class="hljs-keyword">to</span>=v;<br>    edge[tot].val=val;<br>    edge[tot].next=head[u];<br>    head[u]=tot++;<br>&#125;<br><span class="hljs-type">int</span> dfn[maxn];<br><span class="hljs-type">int</span> low[maxn];<br><span class="hljs-type">int</span> boo[maxn];<br><span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> root;<br><span class="hljs-type">void</span> tarjan(<span class="hljs-type">int</span> x)&#123;<br>    dfn[x]=low[x]=++cnt;<br>    <span class="hljs-type">int</span> flag=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=head[x];i!=<span class="hljs-number">-1</span>;i=edge[i].next)&#123;<br>        <span class="hljs-type">int</span> y=edge[i].<span class="hljs-keyword">to</span>;<br>        <span class="hljs-keyword">if</span>(!dfn[y])&#123;<br>            tarjan(y);<br>            low[x]=min(low[x],low[y]);//子树最小low<br>            <span class="hljs-keyword">if</span>(low[y]&gt;=dfn[x])&#123;<br>                flag++;<br>                <span class="hljs-keyword">if</span>(x!=root&amp;&amp;flag&gt;<span class="hljs-number">1</span>)boo[x]=<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> low[x]=min(low[x],dfn[y]);<br>    &#125;<br>&#125;<br><span class="hljs-type">int</span> n;<br><span class="hljs-type">void</span> solve()&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(!dfn[i])&#123;<br>            tarjan(i);<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
-
+                <h1 id="dsu-on-tree"><a href="#dsu-on-tree" class="headerlink" title="dsu on tree"></a>dsu on tree</h1><h2 id="子树颜色种类"><a href="#子树颜色种类" class="headerlink" title="子树颜色种类"></a>子树颜色种类</h2><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><code class="hljs prolog">#include&lt;bits/stdc++.h&gt;<br>using namespace std;<br>#define int long long<br>#define <span class="hljs-symbol">LL</span> long long<br>const <span class="hljs-symbol">LL</span> mod = <span class="hljs-number">100003</span>;<br>const int maxn = <span class="hljs-number">1e5</span> + <span class="hljs-number">5</span>;<br>int a[maxn];<br>vector&lt;int&gt;vec[maxn];<br>int sz[maxn];<br>int son[maxn];<br>int f[maxn];<br>void dfs1(int st,int fa)&#123;<br>    sz[st]=<span class="hljs-number">1</span>;<br>    f[st]=fa;<br>    for(auto i:vec[st])&#123;<br>        if(i!=fa)&#123;<br>            dfs1(i,st);<br>            sz[st]+=sz[i];<br>            if(!son[st]||sz[i]&gt;sz[son[st]])&#123;<br>                son[st]=i;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br>int dfn=<span class="hljs-number">0</span>;<br>int <span class="hljs-symbol">L</span>[maxn],<span class="hljs-symbol">R</span>[maxn],idx[maxn],top[maxn];<br>void dfs2(int st,int tot)&#123;<br>    <span class="hljs-symbol">L</span>[st]=++dfn;<br>    idx[dfn]=st;<br>    top[st]=tot;<br>    if(son[st])dfs2(son[st],tot);<br>    for(auto i:vec[st])&#123;<br>        if(i!=f[st]&amp;&amp;i!=son[st])&#123;<br>            dfs2(i,i);<br>        &#125;<br>    &#125;<br>    <span class="hljs-symbol">R</span>[st]=dfn;<br>&#125;<br>int skp;<br>int now_as=<span class="hljs-number">0</span>;<br>int ans[maxn],cnt[maxn];<br>void get_data(int x,int op)&#123;<br>    for(int i=<span class="hljs-symbol">L</span>[x];i&lt;=<span class="hljs-symbol">R</span>[x];i++)&#123;<br>        if(idx[i]==skp)&#123;<br>            i=<span class="hljs-symbol">R</span>[idx[i]];<br>            continue;<br>        &#125;<br>        if(op) &#123;<br>            if (++cnt[a[idx[i]]] == <span class="hljs-number">1</span>)++now_as;<br>        &#125;<br>        else &#123;<br>            if (--cnt[a[idx[i]]] == <span class="hljs-number">0</span>)--now_as;<br>        &#125;<br>    &#125;<br>&#125;<br>void dsu(int st)&#123;<br>    for(auto i:vec[st])&#123;<br>        if(i!=f[st]&amp;&amp;i!=son[st])&#123;<br>            dsu(i);<br>        &#125;<br>    &#125;<br>    if(son[st])&#123;<br>        dsu(son[st]);<br>        skp=son[st];<br>    &#125;<br>    get_data(st,<span class="hljs-number">1</span>);<br>    ans[st]=now_as;<br>    if(st==top[st])&#123;<br>        skp=<span class="hljs-number">0</span>;<br>        get_data(st,<span class="hljs-number">0</span>);<br>    &#125;<br>    return ;<br>&#125;<br>void solve()&#123;<br>    int n;<br>    cin&gt;&gt;n;<br>    int q;<br>    cin&gt;&gt;q;<br>    for(int i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;a[i];<br>        son[i]=<span class="hljs-number">0</span>;<br>    &#125;<br>    for(int i=<span class="hljs-number">1</span>;i&lt;=n<span class="hljs-number">-1</span>;i++)&#123;<br>        int u,v;<br>        cin&gt;&gt;u&gt;&gt;v;<br>        vec[u].push_back(v);<br>        vec[v].push_back(u);<br>    &#125;<br>    dfs1(<span class="hljs-number">1</span>,<span class="hljs-number">0</span>);<br>    dfs2(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>);<br>    dsu(<span class="hljs-number">1</span>);<br>//    for(int i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>//        cout&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;<span class="hljs-symbol">L</span>[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;<span class="hljs-symbol">R</span>[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;son[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;sz[i]&lt;&lt;endl;<br>//    &#125;<br>    while(q--)&#123;<br>        int x;<br>        cin&gt;&gt;x;<br>        cout&lt;&lt;ans[x]&lt;&lt;endl;<br>    &#125;<br>&#125;<br>signed main() &#123;<br>    int <span class="hljs-symbol">T</span>=<span class="hljs-number">1</span>;<br>    //    cin&gt;&gt;<span class="hljs-symbol">T</span>;<br>    while(<span class="hljs-symbol">T</span>--)&#123;<br>        solve();<br>    &#125;<br>    return <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
                 
@@ -314,8 +312,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>图的连通性</div>
-      <div>http://example.com/2022/10/17/图的连通性/</div>
+      <div>dsu on tree</div>
+      <div>http://example.com/2022/11/22/dsu-on-tree/</div>
     </div>
     <div class="license-meta">
       
@@ -327,7 +325,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Veröffentlicht am</div>
-          <div>October 17, 2022</div>
+          <div>November 22, 2022</div>
         </div>
       
       
@@ -357,18 +355,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/22/dsu-on-tree/" title="dsu on tree">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">dsu on tree</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/14/%E7%BD%91%E7%BB%9C%E6%B5%81/" title="网络流">
-                        <span class="hidden-mobile">网络流</span>
+                      <a href="/2022/10/17/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7/" title="图的连通性">
+                        <span class="hidden-mobile">图的连通性</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
