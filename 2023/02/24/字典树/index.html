@@ -16,21 +16,21 @@
   <meta name="author" content="Salo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="图的连通性tarjan求割点板子123456789101112131415161718192021222324252627282930313233343536373839404142int head[maxn];struct node&amp;#123;    int to,val,next;&amp;#125;;int tot&#x3D;0;node edge[maxn];void add(int u,int v,int">
+    <meta name="description" content="字典树板子 12345678910111213141516171819202122232425struct trie &amp;#123;  int nex[100000][26], cnt;  bool exist[100000];  &#x2F;&#x2F; 该结点结尾的字符串是否存在  void insert(char *s, int l) &amp;#123;  &#x2F;&#x2F; 插入字符串    int p &#x3D; 0;    for (">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图的连通性">
-<meta property="og:url" content="http://example.com/2022/10/17/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7/index.html">
+<meta property="og:title" content="字典树">
+<meta property="og:url" content="http://example.com/2023/02/24/%E5%AD%97%E5%85%B8%E6%A0%91/index.html">
 <meta property="og:site_name" content="Salo&#39;s Blogs">
-<meta property="og:description" content="图的连通性tarjan求割点板子123456789101112131415161718192021222324252627282930313233343536373839404142int head[maxn];struct node&amp;#123;    int to,val,next;&amp;#125;;int tot&#x3D;0;node edge[maxn];void add(int u,int v,int">
+<meta property="og:description" content="字典树板子 12345678910111213141516171819202122232425struct trie &amp;#123;  int nex[100000][26], cnt;  bool exist[100000];  &#x2F;&#x2F; 该结点结尾的字符串是否存在  void insert(char *s, int l) &amp;#123;  &#x2F;&#x2F; 插入字符串    int p &#x3D; 0;    for (">
 <meta property="og:locale" content="zh_CH">
-<meta property="article:published_time" content="2022-10-17T12:01:33.782Z">
-<meta property="article:modified_time" content="2022-10-17T12:03:32.760Z">
+<meta property="article:published_time" content="2023-02-24T10:48:42.485Z">
+<meta property="article:modified_time" content="2023-02-24T10:59:05.653Z">
 <meta property="article:author" content="Salo">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>图的连通性 - Salo&#39;s Blogs</title>
+  <title>字典树 - Salo&#39;s Blogs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +195,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">图的连通性</span>
+            <span id="subtitle">字典树</span>
           
         </div>
 
@@ -206,8 +206,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-17 20:01" pubdate>
-          October 17, 2022 pm
+        <time datetime="2023-02-24 18:48" pubdate>
+          February 24, 2023 pm
         </time>
       </span>
     
@@ -218,7 +218,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          727 wörter
+          451 wörter
         
       </span>
     
@@ -229,7 +229,7 @@
         
         
         
-          7 minuten
+          4 minuten
         
       </span>
     
@@ -267,14 +267,13 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">图的连通性</h1>
+            <h1 style="display: none">字典树</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="图的连通性"><a href="#图的连通性" class="headerlink" title="图的连通性"></a>图的连通性</h1><h2 id="tarjan求割点"><a href="#tarjan求割点" class="headerlink" title="tarjan求割点"></a>tarjan求割点</h2><h3 id="板子"><a href="#板子" class="headerlink" title="板子"></a>板子</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-type">int</span> head[maxn];<br>struct node&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-keyword">to</span>,val,next;<br>&#125;;<br><span class="hljs-type">int</span> tot=<span class="hljs-number">0</span>;<br>node edge[maxn];<br><span class="hljs-type">void</span> <span class="hljs-keyword">add</span>(<span class="hljs-type">int</span> u,<span class="hljs-type">int</span> v,<span class="hljs-type">int</span> val)&#123;<br>    edge[tot].<span class="hljs-keyword">to</span>=v;<br>    edge[tot].val=val;<br>    edge[tot].next=head[u];<br>    head[u]=tot++;<br>&#125;<br><span class="hljs-type">int</span> dfn[maxn];<br><span class="hljs-type">int</span> low[maxn];<br><span class="hljs-type">int</span> boo[maxn];<br><span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> root;<br><span class="hljs-type">void</span> tarjan(<span class="hljs-type">int</span> x)&#123;<br>    dfn[x]=low[x]=++cnt;<br>    <span class="hljs-type">int</span> flag=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=head[x];i!=<span class="hljs-number">-1</span>;i=edge[i].next)&#123;<br>        <span class="hljs-type">int</span> y=edge[i].<span class="hljs-keyword">to</span>;<br>        <span class="hljs-keyword">if</span>(!dfn[y])&#123;<br>            tarjan(y);<br>            low[x]=min(low[x],low[y]);//子树最小low<br>            <span class="hljs-keyword">if</span>(low[y]&gt;=dfn[x])&#123;<br>                flag++;<br>                <span class="hljs-keyword">if</span>(x!=root&amp;&amp;flag&gt;<span class="hljs-number">1</span>)boo[x]=<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> low[x]=min(low[x],dfn[y]);<br>    &#125;<br>&#125;<br><span class="hljs-type">int</span> n;<br><span class="hljs-type">void</span> solve()&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(!dfn[i])&#123;<br>            tarjan(i);<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
-
+                <h1 id="字典树"><a href="#字典树" class="headerlink" title="字典树"></a>字典树</h1><p>板子</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">trie</span> &#123;<br>  <span class="hljs-type">int</span> nex[<span class="hljs-number">100000</span>][<span class="hljs-number">26</span>], cnt;<br>  <span class="hljs-type">bool</span> exist[<span class="hljs-number">100000</span>];  <span class="hljs-comment">// 该结点结尾的字符串是否存在</span><br><br>  <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">char</span> *s, <span class="hljs-type">int</span> l)</span> </span>&#123;  <span class="hljs-comment">// 插入字符串</span><br>    <span class="hljs-type">int</span> p = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; l; i++) &#123;<br>      <span class="hljs-type">int</span> c = s[i] - <span class="hljs-string">&#x27;a&#x27;</span>;<br>      <span class="hljs-keyword">if</span> (!nex[p][c]) nex[p][c] = ++cnt;  <span class="hljs-comment">// 如果没有，就添加结点</span><br>      p = nex[p][c];<br>    &#125;<br>    exist[p] = <span class="hljs-number">1</span>;<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">char</span> *s, <span class="hljs-type">int</span> l)</span> </span>&#123;  <span class="hljs-comment">// 查找字符串</span><br>    <span class="hljs-type">int</span> p = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; l; i++) &#123;<br>      <span class="hljs-type">int</span> c = s[i] - <span class="hljs-string">&#x27;a&#x27;</span>;<br>      <span class="hljs-keyword">if</span> (!nex[p][c]) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>      p = nex[p][c];<br>    &#125;<br>    <span class="hljs-keyword">return</span> exist[p];<br>  &#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
 
 
                 
@@ -314,8 +313,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>图的连通性</div>
-      <div>http://example.com/2022/10/17/图的连通性/</div>
+      <div>字典树</div>
+      <div>http://example.com/2023/02/24/字典树/</div>
     </div>
     <div class="license-meta">
       
@@ -327,7 +326,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Veröffentlicht am</div>
-          <div>October 17, 2022</div>
+          <div>February 24, 2023</div>
         </div>
       
       
@@ -357,18 +356,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/22/dsu-on-tree/" title="dsu on tree">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">dsu on tree</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/14/%E7%BD%91%E7%BB%9C%E6%B5%81/" title="网络流">
-                        <span class="hidden-mobile">网络流</span>
+                      <a href="/2023/02/23/%E5%AD%97%E7%AC%A6%E4%B8%B2hash/" title="字符串hash">
+                        <span class="hidden-mobile">字符串hash</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
