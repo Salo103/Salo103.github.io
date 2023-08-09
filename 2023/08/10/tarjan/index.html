@@ -16,21 +16,21 @@
   <meta name="author" content="Salo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="图的连通性tarjan求割点板子123456789101112131415161718192021222324252627282930313233343536373839404142int head[maxn];struct node&amp;#123;    int to,val,next;&amp;#125;;int tot&#x3D;0;node edge[maxn];void add(int u,int v,int">
+    <meta name="description" content="tarjan原理：通过建出一个点的搜索树，打上每个点在搜索树的时间戳dfn[x]，每个点处理出该点不通过搜索树连边后能到达的最短时间low[x]，当一个非根节点y的子节点xdfn[x]&lt;&#x3D;low[x]的时候，即为割点。即该节点的子节点x要访问到和y相连且不是x子树的节点时，必须要经过y，所以y就是割点。当根节点判断时，只要搜索树跑出两个或以上的子树，即为割点。 手写版子： 123456789">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图的连通性">
-<meta property="og:url" content="http://example.com/2022/10/17/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7/index.html">
+<meta property="og:title" content="tarjan">
+<meta property="og:url" content="http://example.com/2023/08/10/tarjan/index.html">
 <meta property="og:site_name" content="Salo&#39;s Blogs">
-<meta property="og:description" content="图的连通性tarjan求割点板子123456789101112131415161718192021222324252627282930313233343536373839404142int head[maxn];struct node&amp;#123;    int to,val,next;&amp;#125;;int tot&#x3D;0;node edge[maxn];void add(int u,int v,int">
+<meta property="og:description" content="tarjan原理：通过建出一个点的搜索树，打上每个点在搜索树的时间戳dfn[x]，每个点处理出该点不通过搜索树连边后能到达的最短时间low[x]，当一个非根节点y的子节点xdfn[x]&lt;&#x3D;low[x]的时候，即为割点。即该节点的子节点x要访问到和y相连且不是x子树的节点时，必须要经过y，所以y就是割点。当根节点判断时，只要搜索树跑出两个或以上的子树，即为割点。 手写版子： 123456789">
 <meta property="og:locale" content="zh_CH">
-<meta property="article:published_time" content="2022-10-17T12:01:33.782Z">
-<meta property="article:modified_time" content="2022-10-17T12:03:32.760Z">
+<meta property="article:published_time" content="2023-08-09T16:09:20.752Z">
+<meta property="article:modified_time" content="2023-08-09T16:10:48.146Z">
 <meta property="article:author" content="Salo">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>图的连通性 - Salo&#39;s Blogs</title>
+  <title>tarjan - Salo&#39;s Blogs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +195,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">图的连通性</span>
+            <span id="subtitle">tarjan</span>
           
         </div>
 
@@ -206,8 +206,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-17 20:01" pubdate>
-          October 17, 2022 pm
+        <time datetime="2023-08-10 00:09" pubdate>
+          August 10, 2023 am
         </time>
       </span>
     
@@ -218,7 +218,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          727 words
+          1.6k words
         
       </span>
     
@@ -229,7 +229,7 @@
         
         
         
-          7 mins
+          13 mins
         
       </span>
     
@@ -267,14 +267,14 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">图的连通性</h1>
+            <h1 style="display: none">tarjan</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="图的连通性"><a href="#图的连通性" class="headerlink" title="图的连通性"></a>图的连通性</h1><h2 id="tarjan求割点"><a href="#tarjan求割点" class="headerlink" title="tarjan求割点"></a>tarjan求割点</h2><h3 id="板子"><a href="#板子" class="headerlink" title="板子"></a>板子</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-type">int</span> head[maxn];<br>struct node&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-keyword">to</span>,val,next;<br>&#125;;<br><span class="hljs-type">int</span> tot=<span class="hljs-number">0</span>;<br>node edge[maxn];<br><span class="hljs-type">void</span> <span class="hljs-keyword">add</span>(<span class="hljs-type">int</span> u,<span class="hljs-type">int</span> v,<span class="hljs-type">int</span> val)&#123;<br>    edge[tot].<span class="hljs-keyword">to</span>=v;<br>    edge[tot].val=val;<br>    edge[tot].next=head[u];<br>    head[u]=tot++;<br>&#125;<br><span class="hljs-type">int</span> dfn[maxn];<br><span class="hljs-type">int</span> low[maxn];<br><span class="hljs-type">int</span> boo[maxn];<br><span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> root;<br><span class="hljs-type">void</span> tarjan(<span class="hljs-type">int</span> x)&#123;<br>    dfn[x]=low[x]=++cnt;<br>    <span class="hljs-type">int</span> flag=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=head[x];i!=<span class="hljs-number">-1</span>;i=edge[i].next)&#123;<br>        <span class="hljs-type">int</span> y=edge[i].<span class="hljs-keyword">to</span>;<br>        <span class="hljs-keyword">if</span>(!dfn[y])&#123;<br>            tarjan(y);<br>            low[x]=min(low[x],low[y]);//子树最小low<br>            <span class="hljs-keyword">if</span>(low[y]&gt;=dfn[x])&#123;<br>                flag++;<br>                <span class="hljs-keyword">if</span>(x!=root&amp;&amp;flag&gt;<span class="hljs-number">1</span>)boo[x]=<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> low[x]=min(low[x],dfn[y]);<br>    &#125;<br>&#125;<br><span class="hljs-type">int</span> n;<br><span class="hljs-type">void</span> solve()&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(!dfn[i])&#123;<br>            tarjan(i);<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
-
+                <h1 id="tarjan"><a href="#tarjan" class="headerlink" title="tarjan"></a>tarjan</h1><p>原理：通过建出一个点的搜索树，打上每个点在搜索树的时间戳<code>dfn[x]</code>，每个点处理出该点不通过搜索树连边后能到达的最短时间<code>low[x]</code>，当一个非根节点y的子节点x<code>dfn[x]&lt;=low[x]</code>的时候，即为割点。即该节点的子节点x要访问到和y相连且不是x子树的节点时，必须要经过y，所以y就是割点。当根节点判断时，只要搜索树跑出两个或以上的子树，即为割点。</p>
+<p>手写版子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> endl <span class="hljs-string">&#x27;\n&#x27;</span></span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn=<span class="hljs-number">2e5</span>+<span class="hljs-number">5</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> mod=<span class="hljs-number">998244353</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> INF=LLONG_MAX;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> n,m;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    vector&lt;<span class="hljs-type">int</span>&gt;<span class="hljs-built_in">dfn</span>(n+<span class="hljs-number">1</span>,<span class="hljs-number">0</span>);<br>    vector&lt;<span class="hljs-type">int</span>&gt;<span class="hljs-built_in">low</span>(n+<span class="hljs-number">1</span>,<span class="hljs-number">0</span>);<br>    vector&lt;<span class="hljs-type">int</span>&gt;<span class="hljs-built_in">vis</span>(n+<span class="hljs-number">1</span>,<span class="hljs-number">0</span>);<br>    <span class="hljs-function">vector <span class="hljs-title">vec</span><span class="hljs-params">(n+<span class="hljs-number">1</span>,vector&lt;<span class="hljs-type">int</span>&gt;())</span></span>;<br>    vector&lt;<span class="hljs-type">int</span>&gt;as;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;<br>        <span class="hljs-type">int</span> u,v;<br>        cin&gt;&gt;u&gt;&gt;v;<br>        <span class="hljs-keyword">if</span>(u==v)<span class="hljs-keyword">continue</span>;<br>        vec[u].<span class="hljs-built_in">push_back</span>(v);<br>        vec[v].<span class="hljs-built_in">push_back</span>(u);<br>    &#125;<br>    <span class="hljs-type">int</span> id=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> rt=<span class="hljs-number">0</span>;<br>    function&lt;<span class="hljs-type">void</span>(<span class="hljs-type">int</span>,<span class="hljs-type">int</span>)&gt;dfs=[&amp;](<span class="hljs-type">int</span> st,<span class="hljs-type">int</span> fa)&#123;<br>        dfn[st]=low[st]=++id;<br>        <span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i:vec[st])&#123;<br>            <span class="hljs-keyword">if</span>(i==fa)<span class="hljs-keyword">continue</span>;<br>            <span class="hljs-keyword">if</span>(!dfn[i])&#123;<br>                <span class="hljs-built_in">dfs</span>(i,st);<br>                low[st]=<span class="hljs-built_in">min</span>(low[st],low[i]);<br>                <span class="hljs-keyword">if</span>(st!=rt&amp;&amp;dfn[st]&lt;=low[i]&amp;&amp;!vis[st])&#123;<br>                    as.<span class="hljs-built_in">push_back</span>(st);<br>                    vis[st]=<span class="hljs-number">1</span>;<br>                &#125;<br>                cnt++;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                low[st]=<span class="hljs-built_in">min</span>(low[st],dfn[i]);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(st==rt&amp;&amp;!vis[st])&#123;<br>            <span class="hljs-keyword">if</span>(cnt&gt;=<span class="hljs-number">2</span>)as.<span class="hljs-built_in">push_back</span>(st),vis[st]=<span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(dfn[i])<span class="hljs-keyword">continue</span>;<br>        rt=i;<br>        <span class="hljs-built_in">dfs</span>(i,i);<br>    &#125;<br>    std::<span class="hljs-built_in">sort</span>(as.<span class="hljs-built_in">begin</span>(), as.<span class="hljs-built_in">end</span>());<br>    cout&lt;&lt;as.<span class="hljs-built_in">size</span>()&lt;&lt;endl;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> i:as)cout&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>    cout.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>    <span class="hljs-type">int</span> T=<span class="hljs-number">1</span>;<br><span class="hljs-comment">//    cin&gt;&gt;T;</span><br>    <span class="hljs-keyword">while</span>(T--)&#123;<br>        <span class="hljs-built_in">solve</span>();<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
                 
@@ -314,8 +314,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>图的连通性</div>
-      <div>http://example.com/2022/10/17/图的连通性/</div>
+      <div>tarjan</div>
+      <div>http://example.com/2023/08/10/tarjan/</div>
     </div>
     <div class="license-meta">
       
@@ -327,7 +327,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 17, 2022</div>
+          <div>August 10, 2023</div>
         </div>
       
       
@@ -357,9 +357,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/22/dsu-on-tree/" title="dsu on tree">
+                      <a href="/2023/08/10/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C%E6%9D%BF%E5%AD%90/" title="字符串哈希板子">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">dsu on tree</span>
+                        <span class="hidden-mobile">字符串哈希板子</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -367,8 +367,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/14/%E7%BD%91%E7%BB%9C%E6%B5%81/" title="网络流">
-                        <span class="hidden-mobile">网络流</span>
+                      <a href="/2023/08/10/%E6%9A%91%E6%9C%9F%E8%A1%A5%E9%A2%98/" title="2023暑期">
+                        <span class="hidden-mobile">2023暑期</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
